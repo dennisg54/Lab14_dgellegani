@@ -68,7 +68,7 @@ class Settings:
         """
         self.button_font_file = Path.cwd() / "Assets" / "Fonts" / "Audiowide" / "Audiowide-Regular.ttf"        
         self.button_font_color = (255, 255, 255)
-        self.button_font_size = 48        
+        self.button_font_size = 25        
         
         # Initialize the game HUD settings
         """

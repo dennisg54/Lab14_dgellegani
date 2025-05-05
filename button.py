@@ -12,7 +12,7 @@ class Button:
     This class is responsible for creating a button with a specified message,
     handling its appearance, and checking if it has been clicked.
     """
-    def __init__(self, game: AlienInvasion, msg: str) -> None:
+    def __init__(self, game: 'AlienInvasion', msg: str) -> None:
         """
         Initialize the button attributes.
 
@@ -36,7 +36,7 @@ class Button:
         """
         Prepare the message to be displayed on the button.
         """
-        self.msg_image = self.font.render(msg, True, self.text_color, self.color, None)
+        self.msg_image = self.font.render(msg, True, self.text_color, None)
         self.msg_image_rect = self.msg_image.get_rect()
         self.msg_image_rect.center = self.rect.center
         

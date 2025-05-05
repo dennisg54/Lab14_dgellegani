@@ -6,6 +6,7 @@ from ship import Ship
 from arsenal import ShipArsenal
 from alien_fleet import AlienFleet
 from time import sleep
+from button import Button
 
 class AlienInvasion:
     """
@@ -48,7 +49,9 @@ class AlienInvasion:
         self.ship = Ship(self, ShipArsenal(self))
         self.alien_fleet = AlienFleet(self)
         self.alien_fleet.createFleet()
-        self.game_active = True
+        
+        self.play_button = Button(self, "Start Battle")
+        self.game_active = False
 
 
     def run_game(self) -> None:
@@ -68,7 +71,12 @@ class AlienInvasion:
             self.clock.tick(self.settings.FPS)
     
     def _check_collisions(self) -> None:
-        
+        """
+        Check for collisions between the ship, alien fleet, and bullets.
+        This method checks for collisions between the ship and the alien fleet,
+        the alien fleet and the screen bottom, and between bullets and aliens.
+        If a collision is detected, the game status is updated accordingly.
+        """
         # check collisions for ship
         if self.ship.check_collisions(self.alien_fleet.fleet):
            self._check_game_status()         
@@ -110,8 +118,19 @@ class AlienInvasion:
         self.alien_fleet.fleet.empty()
         self.alien_fleet.createFleet()
         
+    def restart_game(self) -> None:
+        """
+        Restart the game by resetting the game stats and creating a new fleet.
+        """
+        # setting up dynamic Settings
+        # reset game stats
+        # update HUD scores
+        self._reset_level()
+        self.ship._center_ship()
+        self.game_active = True
+        pygame.mouse.set_visible(False) 
         
-           
+        
     def _update_screen(self):
         """
         Update the screen with the latest game state.
@@ -120,6 +139,11 @@ class AlienInvasion:
         # Update the screen with the latest game state
         self.screen.blit(self.bg, (0, 0))
         self.alien_fleet.draw()
+        
+        if not self.game_active:
+            self.play_button.draw_button()
+            pygame.mouse.set_visible(True)
+        
         self.ship.draw()        
         pygame.display.flip()
 
@@ -137,10 +161,18 @@ class AlienInvasion:
                 sys.exit()                
             elif event.type == pygame.KEYUP:
                 self._check_keyup_events(event)                                
-            elif event.type == pygame.KEYDOWN:
+            elif event.type == pygame.KEYDOWN and self.game_active == True:
                 self._check_keydown_events(event)
+            elif event.type == pygame.MOUSEBUTTONDOWN:
+                self._check_button_clicked()
                 
 
+    def _check_button_clicked(self):
+        mouse_pos = pygame.mouse.get_pos()
+        if self.play_button.check_clicked(mouse_pos) and not self.game_active:
+            self.restart_game()
+            
+            
     def _check_keyup_events(self, event) -> None:
         """
         Check for key releases and update the ship's movement status accordingly.
