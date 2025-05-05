@@ -23,6 +23,8 @@ class Settings:
         """
         self.bg_file = Path.cwd() / "Assets" / "images" / "pexels-photo-11657224.png"
         
+        self.difficulty_scale = 1.1 # Scale factor for increasing difficulty
+        
         # Initialize the game ship settings - the player's ship
         """
         self.ship_file source:
@@ -32,15 +34,9 @@ class Settings:
         self.ship_file = Path.cwd() / "Assets" / "images" / "starship(nobg).png"
         self.ship_w = 40
         self.ship_h = 60
-        self.ship_speed = 5
-        self.starting_ship_amount = 3
         
         # Initialize the game bullet settings - the player's ship bullets
         self.bullet_file = Path.cwd() / "Assets" / "images" / "beam_nobg.png"
-        self.bullet_speed = 7
-        self.bullet_w = 25
-        self.bullet_h = 80
-        self.bullets_amount = 5
         
         # Initialize the game alien settings - the enemy ship
         """
@@ -52,9 +48,7 @@ class Settings:
         self.alien_file = Path.cwd() / "Assets" / "images" / "enemy_ship_nobg.png"
         self.alien_w = 40
         self.alien_h = 40
-        self.fleet_speed = 1
         self.fleet_direction = 1
-        self.fleet_drop_speed = 40
         
         # Initialize button settings
         self.button_w = 200
@@ -93,6 +87,33 @@ class Settings:
         filename: explosion-312361.mp3
         """
         self.impact_sound = Path.cwd() / "Assets" / "sound" / "explosion-312361.mp3" # Impact sound for bullets hitting aliens
+        
+    def initialize_dynamic_settings(self) -> None:
+        """
+        Initialize settings that change during the game.
+        This method sets the initial values for ship speed, bullet speed, and fleet speed.
+        """         
+        self.ship_speed = 5
+        self.starting_ship_amount = 3
+        
+        self.bullet_speed = 7
+        self.bullets_amount = 5
+        self.bullet_w = 25
+        self.bullet_h = 80
+        
+        self.fleet_speed = 1
+        self.fleet_drop_speed = 40
+        
+    
+    def increase_difficulty(self) -> None:
+        """
+        Increase the difficulty settings for the game.
+        This method increases the ship speed, bullet speed, and fleet speed.
+        """
+        self.ship_speed *= self.difficulty_scale
+        self.bullet_speed *= self.difficulty_scale
+        self.fleet_speed *= self.difficulty_scale
+        
         
         
        

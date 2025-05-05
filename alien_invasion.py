@@ -24,6 +24,7 @@ class AlienInvasion:
         # Initialize pygame and create resources
         pygame.init()
         self.settings = Settings()
+        self.settings.initialize_dynamic_settings()
         self.game_stats = GameStats(self.settings.starting_ship_amount)
         
         # Create the game screen
