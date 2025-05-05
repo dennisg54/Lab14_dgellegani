@@ -94,7 +94,7 @@ class Settings:
         This method sets the initial values for ship speed, bullet speed, and fleet speed.
         """         
         self.ship_speed = 5
-        self.starting_ship_amount = 3
+        self.starting_ship_count = 3
         
         self.bullet_speed = 7
         self.bullets_amount = 5
@@ -103,7 +103,7 @@ class Settings:
         
         self.fleet_speed = 1
         self.fleet_drop_speed = 40
-        
+        self.alien_points = 50
     
     def increase_difficulty(self) -> None:
         """
