@@ -13,17 +13,15 @@ class Settings:
         self.name: str = "Alien Invasion"
         self.screen_w: int = 1200
         self.screen_h: int = 800
-        self.FPS = 60
-        
-        # Initialize the game background
+        self.FPS = 60   
         """
         self.bg_file source:
         Source URL: https://www.pexels.com/photo/space-background-11657224/
         filename: pexels-photo-11657224.jpeg
         """
-        self.bg_file = Path.cwd() / "Assets" / "images" / "pexels-photo-11657224.png"
-        
+        self.bg_file = Path.cwd() / "Assets" / "images" / "pexels-photo-11657224.png"        
         self.difficulty_scale = 1.1 # Scale factor for increasing difficulty
+        self.scores_file = Path.cwd() / "Assets" / "file" / "scores.json" # File to save the scores
         
         # Initialize the game ship settings - the player's ship
         """

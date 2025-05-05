@@ -60,8 +60,6 @@ class AlienInvasion:
         Main loop of the game. This method handles the game events, updates the game state,
         and renders the game screen.
         """
-        
-        # Main loop of the game
         while self.running:
             self._check_events()
             if self.game_active:
@@ -78,7 +76,6 @@ class AlienInvasion:
         the alien fleet and the screen bottom, and between bullets and aliens.
         If a collision is detected, the game status is updated accordingly.
         """
-        # check collisions for ship
         if self.ship.check_collisions(self.alien_fleet.fleet):
            self._check_game_status()         
         
