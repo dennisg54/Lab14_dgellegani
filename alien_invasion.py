@@ -94,7 +94,10 @@ class AlienInvasion:
         
         # check if all aliens are destroyed
         if self.alien_fleet.check_destroyed_status():
-            self._reset_level()         
+            self._reset_level()
+            self.settings.increase_difficulty()
+            # update game stats level
+            # update HUD view  
     
     
     def _check_game_status(self) -> None:
@@ -123,7 +126,7 @@ class AlienInvasion:
         """
         Restart the game by resetting the game stats and creating a new fleet.
         """
-        # setting up dynamic Settings
+        self.settings.initialize_dynamic_settings()
         # reset game stats
         # update HUD scores
         self._reset_level()
@@ -139,7 +142,9 @@ class AlienInvasion:
         """
         # Update the screen with the latest game state
         self.screen.blit(self.bg, (0, 0))
+        self.ship.draw()
         self.alien_fleet.draw()
+        # draw the HUD
         
         if not self.game_active:
             self.play_button.draw_button()
