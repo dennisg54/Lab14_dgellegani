@@ -56,18 +56,43 @@ class Settings:
         self.fleet_direction = 1
         self.fleet_drop_speed = 40
         
+        # Initialize button settings
+        self.button_w = 200
+        self.button_h = 50
+        self.button_color = (77, 150, 240)
+        
+        """
+        self.button_font_file Font:
+        Source URL: https://fonts.google.com/selection?categoryFilters=Appearance:%2FTheme%2FTechno
+        filename: Audiowide
+        """
+        self.button_font_file = Path.cwd() / "Assets" / "Fonts" / "Audiowide" / "Audiowide-Regular.ttf"        
+        self.button_font_color = (255, 255, 255)
+        self.button_font_size = 48        
+        
+        # Initialize the game HUD settings
+        """
+        self.button.HUD_font_file Font:
+        Source URL: https://www.fontspace.com/category/star-trek?p=2
+        filename: Final Frontier Shipside
+        """
+        self.HUD_font_size = 20
+        self.HUD_font_color = (255, 255, 255)
+        self.HUD_font_file = Path.cwd() / "Assets" / "Fonts" / "final-frontier-shipside-font" / "FinalFrontierShipside-Y6O.ttf"
+        
         # Initialize the game sound settings
         """
         self.laser_sound source:
         Source URL: https://pixabay.com/sound-effects/search/laser/
         filename: laser-zap-90575.mp3
-        
+        """
+        self.laser_sound = Path.cwd() / "Assets" / "sound" / "laser-zap-90575.mp3" # Ship firing sound                
+        """
         self.impact_sound source:
         Source URL: https://pixabay.com/sound-effects/search/explosion/
         filename: explosion-312361.mp3
         """
-        self.laser_sound = Path.cwd() / "Assets" / "sound" / "laser-zap-90575.mp3" # Ship firing sound                
         self.impact_sound = Path.cwd() / "Assets" / "sound" / "explosion-312361.mp3" # Impact sound for bullets hitting aliens
         
         
-        
+       
