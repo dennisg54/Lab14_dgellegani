@@ -32,7 +32,7 @@ class GameStats:
         else:
             self.hi_score = 0
             self.save_scores()
-            #save the file
+            
     
     
     def save_scores(self) -> None:
