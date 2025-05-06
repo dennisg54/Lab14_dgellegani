@@ -1,7 +1,12 @@
 
 from pathlib import Path
 
-class Settings:   
+class Settings:
+    """
+    class initializes and manages various game parameters such as screen size,
+    ship settings, bullet settings, alien settings, button settings, HUD settings, and sound settings.
+
+    """
     def __init__ (self) -> None:
         """
         Initialize the game settings.
@@ -42,7 +47,6 @@ class Settings:
         Source URL: https://www.pinterest.com/pin/klingon-bird-of-prey-token-by-thebalzan--527343437621168351/
         original filename: klingon-bird-of-prey-token-by-thebalzan.jpg
         """
-
         self.alien_file = Path.cwd() / "Assets" / "images" / "enemy_ship_nobg.png"
         self.alien_w = 40
         self.alien_h = 40
@@ -112,6 +116,3 @@ class Settings:
         self.bullet_speed *= self.difficulty_scale
         self.fleet_speed *= self.difficulty_scale
         
-        
-        
-       

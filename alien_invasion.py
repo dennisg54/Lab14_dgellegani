@@ -177,6 +177,10 @@ class AlienInvasion:
                 
 
     def _check_button_clicked(self):
+        """
+        function checks if the play button is clicked and the game is not active, then restarts the
+        game.
+        """
         mouse_pos = pygame.mouse.get_pos()
         if self.play_button.check_clicked(mouse_pos) and not self.game_active:
             self.restart_game()

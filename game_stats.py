@@ -23,7 +23,11 @@ class GameStats:
         self.init_saved_scores()
         self.reset_stats()
 
-    def init_saved_scores(self) -> None:        
+    def init_saved_scores(self) -> None:
+        """
+        This function initializes the saved scores by reading from a file and loading the high score value
+        if the file exists, otherwise setting the high score to 0 and saving the scores.
+        """
         self.path = self.settings.scores_file
         if self.path.exists() and self.path.stat.__sizeof__() > 21:
             contents = self.path.read_text()
@@ -36,6 +40,9 @@ class GameStats:
     
     
     def save_scores(self) -> None:
+        """
+        The function `save_scores` saves the high score data to a file in JSON format.
+        """
         scores = {
             "hi_score": self.hi_score,
             }
